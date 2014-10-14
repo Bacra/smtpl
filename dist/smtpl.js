@@ -1,0 +1,2 @@
+/*!smtpl - Template Engine | https://github.com/Bacra/stpl*/
+!function(){function a(a,d,e){if(!a&&!d)return"";var f=c(e||"$");return a?d?b(a,d,f):function(c){return b(a,c||{},f)}:function(a){return b(a,d,f)}}function b(a,b,c){return(""+a).replace(c,function(a,c){return b[c]||a})}function c(a){var b=d[a];if(!b){var c=a.replace(e,"\\$1");b=new RegExp(c+"(\\w+)"+c,"g"),d[a]=b}return b}var d={},e=/([()\\|$\^*?.+\[\]\{\}\/])/g;"function"==typeof define?define(function(){return a}):"undefined"!=typeof exports?module.exports=a:this.smtpl=a}();
