@@ -17,6 +17,8 @@ exports.generateFuncTest = {
 		var nostr = smtpl(null, {value: 1, value2:2});
 		test.equal(nostr('$value$'), '1', 'nostr:1');
 		test.equal(nostr('$value2$'), '2', 'nostr:2');
+		test.equal(nostr(), ''+undefined, 'nostr:undefined');
+		test.equal(nostr(null), ''+null, 'nostr:null');
 
 		test.done();
 	},
@@ -27,6 +29,8 @@ exports.generateFuncTest = {
 		test.equal(noparam({value:1}), '1$value2$', 'noparam:1');
 		test.equal(noparam({value2:2}), '$value$2', 'noparam:2');
 		test.equal(noparam({value:1, value2:2}), '12', 'noparam:3');
+		test.equal(noparam(undefined), '$value$$value2$', 'noparam:undefined');
+		test.equal(noparam(null), '$value$$value2$', 'noparam:null');
 
 		test.done();
 	}
