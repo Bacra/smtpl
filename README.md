@@ -21,3 +21,19 @@ Simple string tpl replace
 	var noparam_render = smtpl('$value$$value2$');
 	noparam_render({value:1})    // out: 1$value2$
 	noparam_render({value2:2})   // out: '$value$2
+
+
+### render blank when value is undefined
+
+	smtpl.blank('$value$$value2$', {value: 1})  // out: 1
+
+
+### custom value method
+
+	var render = smtpl.newSmtpl(function(_asName, _aoParams, _asTotal)
+	{
+		return _aoParams[_asName] || _asName;
+	});
+
+	render('$value$$value2$', {value: 1})    // out: 1value2
+

@@ -12,7 +12,7 @@ module.exports = function (grunt)
 				separator: ''
 			},
 			task: {
-				src: ['src/intro.js', 'src/smtpl.js', 'src/outro.js'],
+				src: ['src/intro.js', 'src/smtpl.js', 'src/main.js', 'src/outro.js'],
 				dest: 'dist/smtpl-debug.js'
 			}
 		},

@@ -4,17 +4,17 @@ if (typeof define === 'function')
 {
     define(function()
     {
-        return smtpl;
+        return main;
     });
 }
 // NodeJS
 else if (typeof exports !== 'undefined')
 {
-    module.exports = smtpl;
+    module.exports = main;
 }
 else
 {
-    this.smtpl = smtpl;
+    this.smtpl = main;
 }
 
 })();
