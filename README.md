@@ -3,7 +3,19 @@ smtpl   [![Build Status](https://travis-ci.org/Bacra/smtpl.svg?branch=master)](h
 
 Simple string tpl replace
 
-## Use
+
+## Installation
+
+use in nodejs:
+
+	$ npm install smtpl
+
+use in browser：
+
+	$ bower install smtpl
+
+
+## Usage
 
 #### render directly
 
