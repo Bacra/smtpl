@@ -35,17 +35,52 @@ use in browser：
 	noparam_render({value2:2})   // out: '$value$2
 
 
-### render blank when value is undefined
-
-	smtpl.blank('$value$$value2$', {value: 1})  // out: 1
-
-
 ### custom value method
 
-	var render = smtpl.newSmtpl(function(_asName, _aoParams, _asTotal)
+	var render = smtpl.newSmtpl(function(_asName, _aoParams)
 	{
 		return _aoParams[_asName] || _asName;
 	});
 
 	render('$value$$value2$', {value: 1})    // out: 1value2
+	
+	// support child value
+	var child_render = smtpl.newSmtpl(function(_asName, _aoParams)
+	{
+		var _oNames = _asName.split('.');
+		var _oParams = _aoParams;
+		for(var i = 0, len = _oNames.length; i < len; i++)
+		{
+			if (_oNames[i] in _oParams)
+			{
+				_oParams = _oParams[_oNames[i]];
+			}
+			else
+			{
+				return '';
+			}
+		}
+
+		return _oParams;
+	}, '[\\w.]+?');
+
+	child_render('$p.child$', {p:{child: 1}})      // out: 1
+
+
+## Render Plugin
+
+### render blank when value is undefined
+
+	smtpl.blank('$value$$value2$', {value: 1})  // out: 1
+
+### render url
+
+	smtpl.url('http://www.qq.com/$#cgi$?t=$#t$&s=$s$&key=$key$',
+		{
+			cgi	: 'index',
+			t	: 'sim&v=<',
+			key	: 'key&d=>'
+		});
+	// out: http://www.qq.com/index?t=sim&v=<&s=&key=key%26d%3D%3E
+
 
