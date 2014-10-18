@@ -18,8 +18,8 @@ exports.generateFuncTest = {
 		var nostr = smtpl(null, {value: 1, value2:2});
 		test.equal(nostr('$value$'), '1', 'nostr:1');
 		test.equal(nostr('$value2$'), '2', 'nostr:2');
-		test.equal(nostr(), ''+undefined, 'nostr:undefined');
-		test.equal(nostr(null), ''+null, 'nostr:null');
+		test.equal(nostr(), 'undefined', 'nostr:undefined');
+		test.equal(nostr(null), 'null', 'nostr:null');
 
 		test.done();
 	},
