@@ -73,10 +73,12 @@ function replaceRegExp(_asTag)
 		mySmtpl.value = _afValue;
 	}
 
-	return function()
+	var _render = function()
 	{
 		return mySmtpl.render.apply(mySmtpl, arguments);
 	};
+	_render.render = _render;
+	return _render; 
 }
 
 var main = newSmtpl();
@@ -86,19 +88,6 @@ main.newSmtpl = newSmtpl;
 main.blank = newSmtpl(function(_asName, _aoParams, _asTotal)
 {
 	return _aoParams[_asName] || '';
-});
-
-main.url = newSmtpl(function(_asName, _aoParams, _asTotal)
-{
-	var _bNeedEncode = _asName.charAt(0) == '#';
-	var _sVal = _aoParams[_bNeedEncode ? _asName.substr(1) : _asName];
-
-	if (_sVal)
-	{
-		return _bNeedEncode ? encodeURIComponent(_sVal) : _sVal;
-	}
-
-	return '';
 });
 
 

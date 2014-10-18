@@ -73,10 +73,12 @@ function replaceRegExp(_asTag)
 		mySmtpl.value = _afValue;
 	}
 
-	return function()
+	var _render = function()
 	{
 		return mySmtpl.render.apply(mySmtpl, arguments);
 	};
+	_render.render = _render;
+	return _render; 
 }
 
 var main = newSmtpl();
