@@ -3,6 +3,7 @@ var smtpl = require('../dist/smtpl-debug.js');
 exports.baseTest = function(test)
 {
 	test.equal(smtpl('$value$', {value: 1}), '1', 'base');
+	test.equal(smtpl.render('$value$', {value: 1}), '1', 'base width render func');
 	test.equal(smtpl('%value%', {value: 1}, '%'), '1', 'tag: %');
 	test.equal(smtpl('$value$$value2$', {value: 1}), '1$value2$', 'no value');
 	test.equal(smtpl('$value$value2$', {value: 1}), '1value2$', 'no open tag');
