@@ -55,7 +55,7 @@ proto._replace = function(_asStr, _aoParams, _asTag)
  */
 proto.value = function(_asName, _aoParams, _asTotal, _asTag, _aoReplaceArgs)
 {
-	return _aoParams[_asName] || _asTotal;
+	return _asName in _aoParams ? _aoParams[_asName] : '';
 };
 
 
