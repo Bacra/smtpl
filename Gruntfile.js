@@ -11,26 +11,32 @@ module.exports = function (grunt)
 				banner: '<%= meta.banner %>',
 				separator: ''
 			},
-			task: {
+			'native': {
 				src: ['src/intro.js', 'src/smtpl.js', 'src/main.js', 'src/outro.js'],
 				dest: 'dist/smtpl-debug.js'
+			},
+			plugin: {
+				src: ['src/intro.js', 'src/smtpl.js', 'src/main.js', 'src/plugin-*.js', 'src/outro.js'],
+				dest: 'dist/smtpl-plugin-debug.js'
 			}
 		},
 		uglify: {
 			options: {
 				banner: '<%= meta.banner %>'
 			},
-			task: {
+			'native': {
 				src: 'dist/smtpl-debug.js',
 				dest: 'dist/smtpl.js'
+			},
+			plugin: {
+				src: 'dist/smtpl-plugin-debug.js',
+				dest: 'dist/smtpl-plugin.js'
 			}
 		},
 		jshint: {
-			files: [
-				'src/smtpl.js',
-			],
+			src_dir: ['src/smtpl.js'],
+			dist_dir: ['dist/*-debug.js'],
 			options: {
-				eqeqeq: true,
 				immed: true,
 				newcap: true,
 				noarg: true,
@@ -48,6 +54,6 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-	grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+	grunt.registerTask('default', ['jshint:src_dir', 'concat', 'jshint:dist_dir', 'uglify']);
 	grunt.registerTask('test', ['default', 'nodeunit']);
 };
