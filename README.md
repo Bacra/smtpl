@@ -31,8 +31,8 @@ use in browser：
 	nostr_render('$value2$')  // out: 2
 
 	var noparam_render = smtpl('$value$$value2$');
-	noparam_render({value:1})    // out: 1$value2$
-	noparam_render({value2:2})   // out: '$value$2
+	noparam_render({value:1})    // out: 1
+	noparam_render({value2:2})   // out: 2
 
 
 ### custom value method
@@ -68,10 +68,6 @@ use in browser：
 
 
 ## Render Plugin
-
-### render blank when value is undefined
-
-	smtpl.blank('$value$$value2$', {value: 1})  // out: 1
 
 ### render url
 
