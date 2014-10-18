@@ -55,7 +55,7 @@ proto._replace = function(_asStr, _aoParams, _asTag)
  */
 proto.value = function(_asName, _aoParams, _asTotal, _asTag, _aoReplaceArgs)
 {
-	return _aoParams[_asName] || _asTotal;
+	return _asName in _aoParams ? _aoParams[_asName] : '';
 };
 
 
@@ -93,11 +93,6 @@ var main = newSmtpl();
 
 main.Smtpl = Smtpl;
 main.newSmtpl = newSmtpl;
-main.blank = newSmtpl(function(_asName, _aoParams, _asTotal)
-{
-	return _aoParams[_asName] || '';
-});
-
 main.url = newSmtpl(function(_asName, _aoParams, _asTotal, _asTag, _aoReplaceArgs)
 {
 	var _sVal = _aoParams[_aoReplaceArgs[3]];

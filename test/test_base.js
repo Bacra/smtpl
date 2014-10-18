@@ -5,7 +5,7 @@ exports.baseTest = function(test)
 	test.equal(smtpl('$value$', {value: 1}), '1', 'base');
 	test.equal(smtpl.render('$value$', {value: 1}), '1', 'base width render func');
 	test.equal(smtpl('%value%', {value: 1}, '%'), '1', 'tag: %');
-	test.equal(smtpl('$value$$value2$', {value: 1}), '1$value2$', 'no value');
+	test.equal(smtpl('$value$$value2$', {value: 1}), '1', 'no value');
 	test.equal(smtpl('$value$value2$', {value: 1}), '1value2$', 'no open tag');
 	test.equal(smtpl('$value$$p.child$', {value: 1, p: {child: 2}}), '1$p.child$', 'child value');
 
@@ -27,11 +27,11 @@ exports.generateFuncTest = {
 	{
 		var noparam = smtpl('$value$$value2$');
 
-		test.equal(noparam({value:1}), '1$value2$', 'noparam:1');
-		test.equal(noparam({value2:2}), '$value$2', 'noparam:2');
+		test.equal(noparam({value:1}), '1', 'noparam:1');
+		test.equal(noparam({value2:2}), '2', 'noparam:2');
 		test.equal(noparam({value:1, value2:2}), '12', 'noparam:3');
-		test.equal(noparam(undefined), '$value$$value2$', 'noparam:undefined');
-		test.equal(noparam(null), '$value$$value2$', 'noparam:null');
+		test.equal(noparam(undefined), '', 'noparam:undefined');
+		test.equal(noparam(null), '', 'noparam:null');
 
 		test.done();
 	}
