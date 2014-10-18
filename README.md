@@ -75,12 +75,12 @@ use in browser：
 
 ### render url
 
-	smtpl.url('http://www.qq.com/$#cgi$?t=$#t$&s=$s$&key=$key$',
+	smtpl.url('http://www.qq.com/$#cgi$?t=$#t$&s=$s$&key=$key$&blank=',
 		{
 			cgi	: 'index',
 			t	: 'sim&v=<',
 			key	: 'key&d=>'
 		});
-	// out: http://www.qq.com/index?t=sim&v=<&s=&key=key%26d%3D%3E
+	// out: http://www.qq.com/index?t=sim&v=<&s=&key=key%26d%3D%3E&blank=
 
 
