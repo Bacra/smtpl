@@ -1,8 +1,8 @@
 {
   "name": "smtpl",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Simple string tpl replace",
-  "main": "dist/smtpl.js",
+  "main": "dist/smtpl-plugin-debug.js",
   "scripts": {
     "test": "grunt test"
   },

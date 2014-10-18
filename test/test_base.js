@@ -37,3 +37,34 @@ exports.generateFuncTest = {
 	}
 }
 
+
+exports.newSmtpl = function(test)
+{
+	var render = smtpl.newSmtpl(function(_asName, _aoParams, _asTotal)
+	{
+		return _aoParams[_asName] || _asName;
+	});
+
+	test.equal(render('$value$$value2$', {value: 1}), '1value2', 'no value');
+
+	var _oTplArgs = ['$p.child$', {p:{child:'child'}}];
+	var _nRenderGetRunTimes2 = 0;
+	var render2 = smtpl.newSmtpl(function(_asName)
+		{
+			_nRenderGetRunTimes2++;
+			return _asName;	
+		})
+		.render.apply(null, _oTplArgs);
+	test.equal(_nRenderGetRunTimes2, 0, 'no support child value');
+
+	var _nRenderGetRunTimes3 = 0;
+	smtpl.newSmtpl(function(_asName)
+		{
+			_nRenderGetRunTimes3++;
+			return _asName;	
+		}, '[\\w.]+?')
+		.render.apply(null, _oTplArgs);
+	test.equal(_nRenderGetRunTimes3, 1, 'support child value');
+
+	test.done();
+};

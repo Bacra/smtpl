@@ -1,7 +1,7 @@
 {
   "name": "smtpl",
   "description": "Simple string tpl replace",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "keywords": ["string", "tpl"],
   "main": "dist/template.js",
   "scripts": ["dist/*"],
@@ -12,6 +12,7 @@
     "package.json",
     "node_modules",
     ".gitignore",
+    ".gitattributes",
     ".npmignore",
     ".travis",
     "README.md",

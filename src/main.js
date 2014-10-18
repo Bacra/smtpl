@@ -1,6 +1,6 @@
-function newSmtpl(_afValue)
+function newSmtpl(_afValue, _asWordReg)
 {
-	var mySmtpl = new Smtpl();
+	var mySmtpl = new Smtpl(_asWordReg);
 	if (typeof _afValue === 'function')
 	{
 		mySmtpl.value = _afValue;

@@ -6,14 +6,16 @@ exports.blank = function(test)
 	test.done();
 };
 
-exports.newSmtpl = function(test)
+exports.url = function(test)
 {
-	var render = smtpl.newSmtpl(function(_asName, _aoParams, _asTotal)
-	{
-		return _aoParams[_asName] || _asName;
-	});
-
-	test.equal(render('$value$$value2$', {value: 1}), '1value2', 'no value');
+	test.equal(smtpl.url('http://www.qq.com/$#cgi$?t=$#t$&s=$s$&key=$key$&blank=$blank$',
+		{
+			cgi	: 'index',
+			t	: 'sim&v=<',
+			key	: 'key&d=>'
+		}),
+		'http://www.qq.com/index?t=sim&v=<&s=&key=key%26d%3D%3E&blank=', 'generate url');
 	test.done();
 };
+
 
