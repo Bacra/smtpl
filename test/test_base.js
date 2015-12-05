@@ -8,6 +8,7 @@ exports.baseTest = function(test)
 	test.equal(smtpl('$value$$value2$', {value: 1}), '1', 'no value');
 	test.equal(smtpl('$value$value2$', {value: 1}), '1value2$', 'no open tag');
 	test.equal(smtpl('$value$$p.child$', {value: 1, p: {child: 2}}), '1$p.child$', 'child value');
+	test.equal(typeof smtpl('', {}), 'string', 'string output string');
 
 	test.done();
 };

@@ -17,7 +17,7 @@ proto.render = function(_asStr, _aoParams, _asTag)
 	_asTag = _asTag || '$';
 	var _oSelf = this;
 
-	if (!_asStr)
+	if (typeof _asStr !== 'string')
 	{
 		return function(_asStr)
 		{
